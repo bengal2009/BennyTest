@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BennyTest</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="TestStringArray">
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Orange</item>
+        <item>Test</item>
+
+    </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Second Fragment!</string>
+    <string name="title_activity_test_blank">TestBlank</string>
+</resources>
