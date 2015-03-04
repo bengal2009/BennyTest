@@ -18,6 +18,11 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class SecondFragment extends Fragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
