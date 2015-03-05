@@ -3,6 +3,7 @@ package com.example.blin.bennytest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -18,7 +19,8 @@ import java.util.ArrayList;
 
 public class TestBlank extends ActionBarActivity {
    private  ListView A3;
-    private Fragment Fr1;
+    private Fragment Fr1,Fr4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,13 @@ public class TestBlank extends ActionBarActivity {
 //        Fr = getSupportFragmentManager().findFragmentById(R.id.fragment2);
         if (savedInstanceState == null) {
             Fr1=new ThirdFragment();
+            Fr4=new FourthFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment2, Fr1, "Third")
                     .commit();
             Log.i("TestBlank","Third Fragment");
         }
+
         A3= (ListView) findViewById(R.id.listView1);
         InitListview();
         A3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -70,7 +74,12 @@ public void BackIntent(View v)
 }
     public void SwitchFra3(View v)
     {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment2, Fr4, "Foruth")
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                .addToBackStack(null)
+                .commit();
+        Log.i("TestBlank","Fourth Fragment");
     }
 
     @Override
