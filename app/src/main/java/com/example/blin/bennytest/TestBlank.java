@@ -2,7 +2,9 @@ package com.example.blin.bennytest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,16 +18,27 @@ import java.util.ArrayList;
 
 public class TestBlank extends ActionBarActivity {
    private  ListView A3;
+    private Fragment Fr1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_blank);
+//        Fr = getSupportFragmentManager().findFragmentById(R.id.fragment2);
+        if (savedInstanceState == null) {
+            Fr1=new ThirdFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment2, Fr1, "Third")
+                    .commit();
+            Log.i("TestBlank","Third Fragment");
+        }
         A3= (ListView) findViewById(R.id.listView1);
         InitListview();
         A3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
+
                 Toast.makeText(getApplicationContext(), "Item:" + position,
                         Toast.LENGTH_SHORT).show();
 
@@ -55,6 +68,10 @@ public void BackIntent(View v)
     Intent intent1 = new Intent(getApplicationContext(),  MainActivity.class);
     startActivity(intent1);
 }
+    public void SwitchFra3(View v)
+    {
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

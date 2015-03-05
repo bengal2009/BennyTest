@@ -2,9 +2,12 @@ package com.example.blin.bennytest;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 /**
@@ -15,10 +18,13 @@ import android.view.ViewGroup;
  * Use the {@link SecondFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SecondFragment extends Fragment {
+public class ThirdFragment extends Fragment {
+    private Fragment Fr2;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -26,17 +32,20 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view;
-        view = inflater.inflate(R.layout.fragment_second, container, false);
-/*
+        view = inflater.inflate(R.layout.fragment_third, container, false);
+        Button A1 = (Button) view.findViewById(R.id.button1);
+        A1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getView().setVisibility(View.GONE);
+                Toast.makeText(getActivity(), "Switch Click!",
+                        Toast.LENGTH_SHORT).show();
 
-        TextView text = (TextView)view.findViewById(R.id.detailsText);
+//                Log.i("Test","Toast Click inside the Fragment");
+            }//Onclick Finish
 
-        Bundle element = this.getArguments();
-        int position = element.getInt("position");
 
-        String[] elementDetails = getActivity().getResources().getStringArray(R.array.ElementsInfoArray);
-        text.setText(elementDetails[position]);
-*/
+        });
 
         return view;
     }
