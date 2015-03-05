@@ -8,9 +8,15 @@
         <item>Banana</item>
         <item>Orange</item>
         <item>Test</item>
+        <item>Apple</item>
+        <item>Banana</item>
+        <item>Orange</item>
+        <item>Test</item>
 
     </string-array>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Second Fragment!</string>
     <string name="title_activity_test_blank">TestBlank</string>
+    <string name="Benny_Text_Size">15dp</string>
+
 </resources>

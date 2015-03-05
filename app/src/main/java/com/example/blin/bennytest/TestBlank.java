@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class TestBlank extends ActionBarActivity {
    private  ListView A3;
-    private Fragment Fr1,Fr4;
+    private Fragment Fr1,Fr4,Fr5;
 
 
     @Override
@@ -30,12 +30,15 @@ public class TestBlank extends ActionBarActivity {
         if (savedInstanceState == null) {
             Fr1=new ThirdFragment();
             Fr4=new FourthFragment();
+            Fr5=new FifthFragment();
+
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment2, Fr1, "Third")
                     .commit();
             Log.i("TestBlank","Third Fragment");
         }
 
+//        InitCustomListView();
         A3= (ListView) findViewById(R.id.listView1);
         InitListview();
         A3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,6 +54,7 @@ public class TestBlank extends ActionBarActivity {
 
 
     }
+
 
     public void InitListview() {
         ArrayList<String> A1 = new ArrayList<String>();
@@ -81,7 +85,16 @@ public void BackIntent(View v)
                 .commit();
         Log.i("TestBlank","Fourth Fragment");
     }
-
+    //Customer List View Click
+    public void SwitchFra4(View v)
+    {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment2, Fr5, "Customer List")
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
+                .addToBackStack(null)
+                .commit();
+        Log.i("Custom List","Customer List");
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

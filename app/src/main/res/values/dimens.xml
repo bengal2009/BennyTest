@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="TextHeight">400dp</dimen>
+    <dimen name="Benny_Text_S">20dp</dimen>
 </resources>
