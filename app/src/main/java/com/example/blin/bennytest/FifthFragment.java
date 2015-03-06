@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.blin.mylibrary.TestLib;
+
 import java.util.ArrayList;
 
 /**
@@ -18,7 +20,8 @@ public class FifthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        TestLib TestLibrary=new TestLib();
+        TestLibrary.ShowMSG("Test1");
 
     }
     public void InitCustomListView(View V1)
@@ -44,6 +47,7 @@ public class FifthFragment extends Fragment {
         PersonData.setGender("Female");
         PersonData.setBirthday("May 26, 2013, 13:35");
         results.add(PersonData);
+        PersonData = new PersonItem();
         PersonData.setFamilyName("Benny");
         PersonData.setGender("Male");
         PersonData.setBirthday("May 26, 2013, 13:35");

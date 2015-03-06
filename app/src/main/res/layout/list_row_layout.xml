@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Name"
         android:id="@+id/ID_Name"
-        android:textSize="@dimen/Benny_Text_S"
+
 
 
         android:layout_weight="1.25" />
@@ -41,12 +41,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Gender"
-        android:textSize="@dimen/Benny_Text_S"
+
         android:id="@+id/ID_Gender"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
-        android:layout_marginRight="50dp"
+
         android:paddingTop="10dp" />
 
 </LinearLayout>
