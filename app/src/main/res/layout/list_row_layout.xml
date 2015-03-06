@@ -44,6 +44,7 @@
 
         android:id="@+id/ID_Gender"
 
-        android:paddingTop="10dp" />
+        android:paddingTop="2dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

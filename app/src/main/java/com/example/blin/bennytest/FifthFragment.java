@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.blin.mylibrary.TestLib;
 
@@ -35,7 +36,7 @@ public class FifthFragment extends Fragment {
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = lv1.getItemAtPosition(position);
                 PersonItem newsData = (PersonItem) o;
-//                Toast.makeText(MainActivity.this, "Selected :" + " " + newsData, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Selected :" + " " + newsData, Toast.LENGTH_LONG).show();
             }
 
         });
@@ -47,6 +48,7 @@ public class FifthFragment extends Fragment {
         PersonData.setGender("Female");
         PersonData.setBirthday("May 26, 2013, 13:35");
         results.add(PersonData);
+
         PersonData = new PersonItem();
         PersonData.setFamilyName("Benny");
         PersonData.setGender("Male");
