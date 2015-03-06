@@ -2,10 +2,14 @@ package com.example.blin.bennytest;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 Context mcontext;
+    GestureDetector gestureDetector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +37,79 @@ Context mcontext;
 
         }
         A2.setText(SB.toString());
+        SharedPreferences SP=getSharedPreferences("MyPref", 0);
+        SharedPreferences.Editor editor = SP.edit();
+        if(SP==null) {
 
+            SP.edit()
+                    .putString("Name", "Benny")
+                    .putString("Addr", "Pudong")
+                    .commit();
 
+            Log.i("MainActivity","SP Create!");
+        }
+        else {
+
+            Log.i("MainActivity","SP Read!"+"Name"+SP.getString("Name",""));
+        }
+     //Gesture Test
+        InitGesture();
     }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+    public void  InitGesture(){
+        gestureDetector = new GestureDetector(new GestureDetector.OnGestureListener() {
 
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+                                    float distanceY) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                                   float velocityY) {
+                if(velocityX>0){
+                   // viewFlipper.showNext();
+                    Toast.makeText(getApplicationContext(), "Right",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    //viewFlipper.showPrevious();
+                    Toast.makeText(getApplicationContext(), "Left",
+                            Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onDown(MotionEvent e) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

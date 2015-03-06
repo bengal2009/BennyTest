@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 public class TestBlank extends ActionBarActivity {
    private  ListView A3;
     private Fragment Fr1,Fr4,Fr5;
-
+    private GestureDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,70 @@ public class TestBlank extends ActionBarActivity {
             }
         });
 
-
+        InitGesture();
     }
 
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+    public void  InitGesture(){
+        gestureDetector = new GestureDetector(new GestureDetector.OnGestureListener() {
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
+                                    float distanceY) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                                   float velocityY) {
+                if(velocityX>0){
+                    // viewFlipper.showNext();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment2, Fr1, "Third")
+                            .commit();
+
+                    Toast.makeText(getApplicationContext(), "Right",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    //viewFlipper.showPrevious();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment2, Fr4, "Third")
+                            .commit();
+                    Toast.makeText(getApplicationContext(), "Left",
+                            Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onDown(MotionEvent e) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+        });
+    }
 
     public void InitListview() {
         ArrayList<String> A1 = new ArrayList<String>();
