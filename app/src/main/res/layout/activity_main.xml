@@ -31,8 +31,11 @@
         android:layout_height="wrap_content"
         android:text="Preference"
         android:id="@+id/button2"
-        android:onClick="PrefClick"
+        android:onClick="AnimClick"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textview1"
         android:layout_alignEnd="@+id/textview1" />
+
+
+
 </RelativeLayout>

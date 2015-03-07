@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,10 @@ Context mcontext;
 
         }
         A2.setText(SB.toString());
+
+        InitAnim(A2);
+        //Set Preference
+
         SharedPreferences SP=getSharedPreferences("MyPref", 0);
         SharedPreferences.Editor editor = SP.edit();
         if(SP==null) {
@@ -110,7 +116,11 @@ Context mcontext;
             }
         });
     }
-
+public  void InitAnim(TextView A2)
+{
+    Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+    A2.startAnimation(animation2);
+}
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
