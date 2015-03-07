@@ -26,15 +26,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:text="Switch"
-        android:id="@+id/SWBut"
-        android:onClick="SwibutClick"
-        android:layout_alignTop="@+id/BT1"
-        android:layout_toRightOf="@+id/BT1"
-        android:layout_toEndOf="@+id/BT1" />
 
-=======
         android:text="Switch Fragment"
         android:id="@+id/FraBut"
         android:onClick="SwitchFra3"
@@ -52,5 +44,4 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
->>>>>>> master
 </RelativeLayout>
