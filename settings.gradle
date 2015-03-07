@@ -1,2 +1,3 @@
-include ':Benlib'':app'
+include ':Benlib'
+include ':app'
 project(':Benlib').projectDir = new java.io.File(settingsDir, '../BenLib/benlib')
