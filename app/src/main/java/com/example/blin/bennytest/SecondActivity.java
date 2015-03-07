@@ -1,13 +1,17 @@
 package com.example.blin.bennytest;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.example.blin.benlib.BenUtil;
 
 
 public class SecondActivity extends ActionBarActivity {
-
+    String TAG="Second Activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +24,17 @@ public class SecondActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_second, menu);
         return true;
+    }
+public void ShowDia(View v)
+{
+    BenUtil A1=new BenUtil();
+    A1.Bendialog1(this,"Do you want quit?");
+    Log.i(TAG,"ShowDia");
+}
+    public void ShowDia1(View v)
+    {
+        BenUtil A1=new BenUtil();
+        A1.Dialog_Input(this);
     }
 
     @Override
