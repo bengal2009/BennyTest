@@ -30,12 +30,45 @@
         android:layout_alignTop="@+id/DiaBut"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_centerVertical="true"
+        android:text="Strart Sev"
+        android:id="@+id/StSvc"
+        android:onClick="StService"
+        android:layout_below="@+id/DiaBut"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop Sev"
+        android:id="@+id/StpSvc"
+        android:onClick="StopSvc"
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/StSvc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="146dp"
+        android:minHeight="200dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Internet"
+        android:id="@+id/IntTest"
+        android:onClick="RDINT"
+        android:layout_above="@+id/StpSvc"
+        android:layout_toRightOf="@+id/StpSvc"
+        android:layout_toEndOf="@+id/StpSvc" />
 
 </RelativeLayout>

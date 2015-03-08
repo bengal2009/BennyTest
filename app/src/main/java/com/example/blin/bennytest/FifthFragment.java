@@ -10,8 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.blin.benlib.BenFileIO;
-
 import java.util.ArrayList;
 
 /**
@@ -21,8 +19,6 @@ public class FifthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      BenFileIO A5=new BenFileIO();
-        A5.Test();
 
     }
     public void InitCustomListView(View V1)
