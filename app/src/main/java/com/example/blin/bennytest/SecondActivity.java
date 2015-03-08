@@ -1,11 +1,13 @@
 package com.example.blin.bennytest;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.blin.benlib.BenUtil;
 
@@ -33,8 +35,10 @@ public void ShowDia(View v)
 }
     public void ShowDia1(View v)
     {
+        AlertDialog S1;
         BenUtil A1=new BenUtil();
-        A1.Dialog_Input(this);
+        S1=A1.Dialog_Input(this);
+        Log.i(TAG,S1);
     }
 
     @Override
