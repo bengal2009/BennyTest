@@ -18,5 +18,6 @@
     <string name="hello_blank_fragment">Second Fragment!</string>
     <string name="title_activity_test_blank">TestBlank</string>
     <string name="Benny_Text_Size">15dp</string>
+    <string name="title_activity_second">SecondActivity</string>
 
 </resources>

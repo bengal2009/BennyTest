@@ -10,8 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.blin.benlib.FileIO;
-
 import java.util.ArrayList;
 
 /**
@@ -21,8 +19,6 @@ public class FifthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      FileIO A5=new FileIO();
-        A5.Test();
 
     }
     public void InitCustomListView(View V1)
