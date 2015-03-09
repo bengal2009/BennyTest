@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.blin.bennytest" >
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
             android:name=".TestBlank"
@@ -25,10 +26,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--Service declared in manifest -->
-        <service android:name=".HelloService"
-            android:exported="false"/>
+        <!-- Service declared in manifest -->
+        <service
+            android:name=".HelloService"
+            android:exported="false" />
 
+        <activity
+            android:name=".GPS.GPSDEMO"
+            android:label="@string/title_activity_gpsdemo" >
+        </activity>
     </application>
 
 </manifest>
