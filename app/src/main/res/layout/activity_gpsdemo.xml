@@ -19,5 +19,45 @@
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="73dp" />
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true" >
+    </ImageSwitcher>
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#99000000"
+        android:padding="10dp" />
+    <TextSwitcher
+        android:id="@+id/textSwitcher2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#99000000"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSwitch"
+        android:text="Next Image >>"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSwitch2"
+        android:text="Switch2"
+        android:id="@+id/button4"
+        android:layout_alignTop="@+id/imageSwitcher"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
