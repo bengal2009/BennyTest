@@ -28,6 +28,8 @@ public class GPSDEMO extends ActionBarActivity {
         BenUtil A1=new BenUtil();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gpsdemo);
+        TextView t2=(TextView) findViewById(R.id.textView3);
+        t2.setText("System ID:"+A1.SystetemID(this));
         mTextSwitcher = (TextSwitcher) findViewById(R.id.textSwitcher);
         mTextSwitcher2 = (TextSwitcher) findViewById(R.id.textSwitcher2);
         A1.BenAnimateText(this,mTextSwitcher2);
