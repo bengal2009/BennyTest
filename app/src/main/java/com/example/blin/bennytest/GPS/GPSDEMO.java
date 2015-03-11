@@ -22,10 +22,10 @@ public class GPSDEMO extends ActionBarActivity {
     private int mPosition = 0;
     private TextSwitcher mTextSwitcher;
     private TextSwitcher mTextSwitcher2;
-
+    BenUtil A1=new BenUtil();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BenUtil A1=new BenUtil();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gpsdemo);
         TextView t2=(TextView) findViewById(R.id.textView3);
@@ -47,6 +47,9 @@ public class GPSDEMO extends ActionBarActivity {
 
 
     }
+    public void NoClick(View view) {
+        A1.ShareIntent(this);
+    }
     public void onSwitch(View view) {
         mTextSwitcher.setText(TEXTS[mPosition]);
         mPosition = (mPosition + 1) % TEXTS.length;
@@ -55,6 +58,7 @@ public class GPSDEMO extends ActionBarActivity {
         mTextSwitcher2.setText(TEXTS[mPosition]);
         mPosition = (mPosition + 1) % TEXTS.length;
     }
+
 
     public void TestGPS(View v)
     {
