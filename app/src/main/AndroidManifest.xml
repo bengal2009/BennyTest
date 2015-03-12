@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.blin.bennytest" >
-    <!--android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >-->
+
+    <!-- android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" > -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,6 +37,14 @@
         <activity
             android:name=".GPS.GPSDEMO"
             android:label="@string/title_activity_gpsdemo" >
+        </activity>
+        <activity
+            android:name=".SQLTEST.SqlMain"
+            android:label="@string/title_activity_sql_main" >
+        </activity>
+        <activity
+            android:name=".SQLTEST.Addrecord"
+            android:label="@string/title_activity_addrecord" >
         </activity>
     </application>
 
