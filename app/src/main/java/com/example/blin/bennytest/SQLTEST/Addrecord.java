@@ -36,7 +36,7 @@ BenSqllite.DBManager dbManager = new BenSqllite.DBManager(this);
     final String name = subjectEditText.getText().toString();
     final String desc = descEditText.getText().toString();
     Log.i("SQL","Over!");
-//    dbManager.insert(name, desc);
+    dbManager.insert(name, desc);
 
   /*  Intent main = new Intent(this, SqlMain.class)
             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
