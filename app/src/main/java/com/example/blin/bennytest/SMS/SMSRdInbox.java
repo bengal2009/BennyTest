@@ -27,7 +27,7 @@ import com.example.blin.bennytest.R;
 
         对话：content://sms/conversations
 */
-
+//test
 public class SMSRdInbox extends Activity implements View.OnClickListener {
     private static final Uri SMS_INBOX = Uri.parse("content://sms/inbox");
     //  GUI Widget
