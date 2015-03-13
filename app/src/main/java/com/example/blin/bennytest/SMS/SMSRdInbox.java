@@ -74,8 +74,10 @@ public class SMSRdInbox extends Activity implements View.OnClickListener {
 
             // Fetch Inbox SMS Message from Built-in Content Provider
             Cursor c = cr.query(inboxURI, reqCols, null, null, null);
-            c.moveToFirst();
-            Log.i(TAG, c.getString(c.getColumnIndex("address")));
+            if(c.getCount()>0) {
+                c.moveToFirst();
+                Log.i(TAG, c.getString(c.getColumnIndex("address")));
+            }
 //            Log.i(TAG,"Test");
             // Attached Cursor with adapter and display in listview
             adapter = new SimpleCursorAdapter(this, R.layout.row, c,
