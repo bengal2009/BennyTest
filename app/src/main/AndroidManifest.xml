@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.blin.bennytest" >
-    <!--android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" >-->
+
+    <!-- android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen" > -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 接收開機完成廣播 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_SMS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,11 +25,7 @@
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_second" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!-- Service declared in manifest -->
         <service
@@ -34,6 +35,38 @@
         <activity
             android:name=".GPS.GPSDEMO"
             android:label="@string/title_activity_gpsdemo" >
+        </activity>
+        <activity
+            android:name=".SQLTEST.SqlMain"
+            android:label="@string/title_activity_sql_main" >
+        </activity>
+        <activity
+            android:name=".SQLTEST.Addrecord"
+            android:label="@string/title_activity_addrecord" >
+        </activity>
+        <!-- 當鬧鈴時間到達時要執行的程式 -->
+        <receiver android:name=".PlayReceiver" >
+            <intent-filter>
+                <action android:name="play_hskay" />
+            </intent-filter>
+        </receiver>
+        <!--
+        &lt;!&ndash; 當手機重開機，所要執行的程式。 &ndash;&gt;
+        <receiver android:name=".AlarmInitReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        -->
+
+        <activity
+            android:name=".SMS.SMSRdInbox"
+            android:label="@string/title_activity_smsrd_inbox" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

@@ -20,5 +20,8 @@
     <string name="Benny_Text_Size">15dp</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_gpsdemo">GPSDEMO</string>
+    <string name="title_activity_sql_main">SqlMain</string>
+    <string name="title_activity_addrecord">Addrecord</string>
+    <string name="title_activity_smsrd_inbox">SMSRdInbox</string>
 
 </resources>

@@ -1,13 +1,16 @@
 package com.example.blin.bennytest.GPS;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,7 +24,10 @@ import android.widget.ViewSwitcher.ViewFactory;
 
 import com.example.blin.benlib.BenGps;
 import com.example.blin.benlib.BenUtil;
+import com.example.blin.bennytest.PlayReceiver;
 import com.example.blin.bennytest.R;
+
+import java.util.Calendar;
 
 public class GPSDEMO extends ActionBarActivity {
     String TAG = "GPSDEMO";
@@ -32,7 +38,6 @@ public class GPSDEMO extends ActionBarActivity {
     BenUtil A1=new BenUtil();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gpsdemo);
         if (Build.VERSION.SDK_INT < 16) {
@@ -56,7 +61,59 @@ public class GPSDEMO extends ActionBarActivity {
 
         mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
         mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
+        ResolutionInfo();
 
+    }
+    public void ResolutionInfo()
+    {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay()
+                .getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        int DPI = metrics.densityDpi;
+        Log.i(TAG,"width:"+Integer.toString(width)+",Height:"+Integer.toString(height)+",DPI:"+Integer.toString(DPI));
+
+    }
+    public void AlarmSet(View view) {
+        Calendar cal = Calendar.getInstance();
+        // 設定於 3 分鐘後執行
+        cal.add(Calendar.SECOND, 7);
+
+        Intent intent = new Intent(this, PlayReceiver.class);
+        intent.putExtra("msg", "play_hskay");
+
+        PendingIntent pi = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pi);
+        Toast.makeText(getApplicationContext(), "Alarm set Complete! ",
+                Toast.LENGTH_SHORT).show();
+
+    }
+    public void AlarmSet1(View view) {
+        // 向 Android 系統註冊 AlarmManager
+        for(int x=1;x<6;x++)
+        {
+            Calendar mCal = Calendar.getInstance();
+            // 自明天起, 連續 5 天的 14:00 執行
+            mCal.add(Calendar.DATE,  x);
+            mCal.set(Calendar.HOUR_OF_DAY, 14);
+            mCal.set(Calendar.MINUTE, 0);
+            mCal.set(Calendar.SECOND, 0);
+            Intent intentAlarm = new Intent(this, PlayReceiver.class);
+
+            // 以日期字串組出不同的 category
+            intentAlarm.addCategory("D"+String.valueOf(mCal.get(Calendar.YEAR))+String.valueOf((mCal.get(Calendar.MONTH)+1))+String.valueOf(mCal.get(Calendar.DATE)));
+
+            intentAlarm.putExtra("msg", "play_hskay");
+            PendingIntent pi = PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            am.set(AlarmManager.RTC_WAKEUP, mCal.getTimeInMillis(), pi);
+        }
+
+        Toast.makeText(getApplicationContext(), "Alarm set Complete! ",
+                Toast.LENGTH_SHORT).show();
 
     }
     public void sendNotification(View view) {
