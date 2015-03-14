@@ -23,5 +23,6 @@
     <string name="title_activity_sql_main">SqlMain</string>
     <string name="title_activity_addrecord">Addrecord</string>
     <string name="title_activity_smsrd_inbox">SMSRdInbox</string>
+    <string name="title_activity_gpssample">GPSSample</string>
 
 </resources>

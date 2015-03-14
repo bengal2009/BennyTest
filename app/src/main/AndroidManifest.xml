@@ -8,10 +8,15 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 接收開機完成廣播 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- GPS TUNEUP -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,7 +33,6 @@
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_second" >
-
         </activity>
         <!-- Service declared in manifest -->
         <service
@@ -48,9 +52,9 @@
             android:label="@string/title_activity_addrecord" >
         </activity>
 
-        <receiver android:name=".SmsReceiver">
-            <intent-filter android:priority="800">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+        <receiver android:name=".SMS.SmsReceiver" >
+            <intent-filter android:priority="800" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
@@ -77,6 +81,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".GPS.GPSSample"
+            android:label="@string/title_activity_gpssample" >
         </activity>
     </application>
 

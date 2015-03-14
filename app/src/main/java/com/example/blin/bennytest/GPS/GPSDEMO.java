@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +71,7 @@ public class GPSDEMO extends ActionBarActivity {
         int width = metrics.widthPixels;
         int height = metrics.heightPixels;
         int DPI = metrics.densityDpi;
-        Log.i(TAG,"width:"+Integer.toString(width)+",Height:"+Integer.toString(height)+",DPI:"+Integer.toString(DPI));
+//        Log.i(TAG,"width:"+Integer.toString(width)+",Height:"+Integer.toString(height)+",DPI:"+Integer.toString(DPI));
 
     }
     public void AlarmSet(View view) {
@@ -186,7 +185,7 @@ public class GPSDEMO extends ActionBarActivity {
     }
     public void NoClick(View view) {
         A1.AddNotification(getApplication(),1);
-        Log.i(TAG,"Click!" );
+//        Log.i(TAG,"Click!" );
     }
     public void onSwitch(View view) {
         mTextSwitcher.setText(TEXTS[mPosition]);
@@ -221,7 +220,7 @@ public class GPSDEMO extends ActionBarActivity {
             Toast.makeText(this, "Latitude:" + latitude + " | Longitude: " + longitude, Toast.LENGTH_LONG).show();
 
             address = mGPSService.getLocationAddress();
-            Log.i(TAG,"Latitude: " + latitude + " \nLongitude: " + longitude);
+//            Log.i(TAG,"Latitude: " + latitude + " \nLongitude: " + longitude);
 //            tvLocation.setText("Latitude: " + latitude + " \nLongitude: " + longitude);
 //            tvAddress.setText("Address: " + address);
         }

@@ -89,7 +89,6 @@
             android:layout_alignParentRight="true"
             android:layout_gravity="center_horizontal"
             android:background="#ffeb2e38"
-            android:padding="30dp"
             android:minWidth="200sp" />
         <Button
             android:layout_width="wrap_content"
