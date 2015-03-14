@@ -24,5 +24,6 @@
     <string name="title_activity_addrecord">Addrecord</string>
     <string name="title_activity_smsrd_inbox">SMSRdInbox</string>
     <string name="title_activity_gpssample">GPSSample</string>
+    <string name="title_activity_media_record">MediaRecordActivity</string>
 
 </resources>
