@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.blin.bennytest.ApplicationHelper;
 import com.example.blin.bennytest.R;
 
 import java.io.File;
@@ -39,8 +40,12 @@ public class MediaRecordActivity extends ActionBarActivity {
         }
 
 //        record();
-    }
+        getApplicationContext().putSession(false); // 设置登录状态为退出
 
+    }
+    public ApplicationHelper getApplicationContext() {
+        return ((ApplicationHelper) super.getApplicationContext());
+    }
     /**
      * 开始录制
      */
