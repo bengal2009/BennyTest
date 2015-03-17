@@ -184,7 +184,7 @@ public class GPSDEMO extends ActionBarActivity {
         // END_INCLUDE(send_notification)
     }
     public void NoClick(View view) {
-        A1.AddNotification(getApplication(),1);
+        A1.AddNotification(this,"Benny","Test","11111\n22222",0);
 //        Log.i(TAG,"Click!" );
     }
     public void onSwitch(View view) {

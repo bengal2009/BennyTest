@@ -106,6 +106,10 @@
             android:name=".GPS.GPSDemo1"
             android:label="@string/title_activity_gpsdemo1" >
         </activity>
+        <activity
+            android:name=".Util.NotificationSample"
+            android:label="@string/title_activity_notification_sample" >
+        </activity>
     </application>
 
 </manifest>

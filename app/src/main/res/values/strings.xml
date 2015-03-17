@@ -26,5 +26,6 @@
     <string name="title_activity_gpssample">GPSSample</string>
     <string name="title_activity_media_record">MediaRecordActivity</string>
     <string name="title_activity_gpsdemo1">GPSDemo1</string>
+    <string name="title_activity_notification_sample">NotificationSample</string>
 
 </resources>
