@@ -51,4 +51,14 @@
         android:layout_marginRight="25dp"
         android:layout_marginTop="10dip" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/BUT1"
+        android:onClick="TEST"
+        android:layout_alignTop="@+id/button1"
+        android:layout_toStartOf="@+id/button1"
+        android:layout_marginEnd="55dp" />
+
 </RelativeLayout>
