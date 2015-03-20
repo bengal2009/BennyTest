@@ -47,7 +47,6 @@ public class Baidumap extends ActionBarActivity implements
     private Context mcontext;
     BitmapDescriptor mCurrentMarker;
 
-
     GeoCoder mSearch = null; // 搜索模?，也可去掉地?模??立使用
     BaiduMap mBaiduMap = null;
     MapView mMapView = null;
@@ -55,7 +54,8 @@ public class Baidumap extends ActionBarActivity implements
     RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
     boolean isFirstLoc = true;// 是否首次定位
-
+    private static final LatLng GEO_BEIJING = new LatLng(39.945, 116.404);
+    private LatLng CurPOI;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,6 +123,19 @@ public class Baidumap extends ActionBarActivity implements
             startActivity(intent);
             return true;
         }
+        if (id == R.id.backpoi) {
+
+            if (CurPOI==null) return true;
+            MapStatusUpdate u4 = MapStatusUpdateFactory
+                    .newLatLng(CurPOI);
+            MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(17.0f);
+
+//            mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
+//                    LocationMode.NORMAL, true,mCurrentMarker ));
+            mBaiduMap.setMapStatus(u4);
+            mBaiduMap.setMapStatus(msu);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -177,6 +190,7 @@ public class Baidumap extends ActionBarActivity implements
             Log.i(TAG,"Request Location");
         }
     }
+
     public void GerLookup(View V)
     {
         BDLocation location;
@@ -203,6 +217,8 @@ public class Baidumap extends ActionBarActivity implements
                     .longitude(location.getLongitude()).build();
           /*  Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
             Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));*/
+            CurPOI=new LatLng(location.getLatitude(),location.getLongitude()) ;
+
             mBaiduMap.setMyLocationData(locData);
             if (isFirstLoc) {
                 isFirstLoc = false;

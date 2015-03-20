@@ -2,6 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.blin.bennytest.GPS.Baidumap">
-    <item android:id="@+id/offline" android:title="Offline Map"
+    <item android:id="@+id/backpoi" android:title="回到原点"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/offline" android:title="离线地图"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>
