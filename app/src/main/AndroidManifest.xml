@@ -138,6 +138,10 @@
             android:name=".GPS.Baidumap"
             android:label="@string/title_activity_baidumap" >
         </activity>
+        <activity
+            android:name=".GPS.OfflineDemo"
+            android:label="Offline Demo" >
+        </activity>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
