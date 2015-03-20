@@ -120,28 +120,7 @@ public class Baidumap extends Activity implements
         };
         requestLocButton.setOnClickListener(btnClickListener);
 
-        RadioGroup group = (RadioGroup) this.findViewById(R.id.radioGroup);
-        radioButtonListener = new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.defaulticon) {
-                    // ?入null?，恢复默???
-                    mCurrentMarker = null;
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, null));
-                }
-                if (checkedId == R.id.customicon) {
-                    // 修改?自定?marker
-//					mCurrentMarker = BitmapDescriptorFactory
-//							.fromResource(R.drawable.icon_geo);
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, mCurrentMarker));
-                }
-            }
-        };
-        group.setOnCheckedChangeListener(radioButtonListener);
+
     }
     public void TEST(View V)
     {
@@ -183,15 +162,15 @@ public class Baidumap extends Activity implements
                             // 此??置??者?取到的方向信息，???0-360
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
-            Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
-            Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));
+          /*  Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
+            Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));*/
             mBaiduMap.setMyLocationData(locData);
             if (isFirstLoc) {
                 isFirstLoc = false;
                 LatLng ll = new LatLng(location.getLatitude(),
                         location.getLongitude());
-                Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
-                Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));
+                /*Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
+                Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));*/
 
 
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);

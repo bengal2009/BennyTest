@@ -10,69 +10,41 @@
         android:clickable="true" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="80dip"
-        android:background="#D000"
-        android:minWidth="100dip"
-        android:orientation="vertical"
-        android:padding="2dp" >
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="定位icon" >
+            android:text="FindLoca"
+            android:id="@+id/BUT1"
+            android:onClick="TEST"
+           />
 
-            <RadioButton
-                android:id="@+id/defaulticon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="默???" >
-            </RadioButton>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude"
+            android:id="@+id/BUT2"
+            android:onClick="GerLookup"
 
-            <RadioButton
-                android:id="@+id/customicon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="自定???" >
-            </RadioButton>
-        </RadioGroup>
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repos"
+            android:id="@+id/BUT3"
+            android:onClick="Repos"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FindLoca"
+            android:id="@+id/button1"
+            />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="10dip" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FindLoca"
-        android:id="@+id/BUT1"
-        android:onClick="TEST"
-       />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Latitude"
-        android:id="@+id/BUT2"
-        android:onClick="GerLookup"
-
-        android:layout_marginLeft="100dp" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Repos"
-        android:id="@+id/BUT3"
-        android:onClick="Repos"
-
-        android:layout_marginLeft="300dp" />
 
 </RelativeLayout>

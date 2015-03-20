@@ -138,6 +138,12 @@
             android:name=".GPS.Baidumap"
             android:label="@string/title_activity_baidumap" >
         </activity>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
     </application>
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
     </uses-permission>
