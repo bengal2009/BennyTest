@@ -1,9 +1,12 @@
 package com.example.blin.bennytest.GPS;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -33,7 +36,7 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.example.blin.bennytest.R;
 //http://blog.csdn.net/android_ls/article/details/8583656
-public class Baidumap extends Activity implements
+public class Baidumap extends ActionBarActivity implements
         OnGetGeoCoderResultListener {
     String TAG = "LocationDemo";
     private static final String LTAG = Baidumap.class.getSimpleName();
@@ -86,6 +89,42 @@ public class Baidumap extends Activity implements
 //        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
 //        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 //        mBaiduMap.setTrafficEnabled(((CheckBox) view).isChecked());
+    }
+
+    /*
+     * onCreateOptionsMenu
+     * #onCreateOptionsMenu(Menu menu)
+     * @return int
+       */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_baidumap, menu);
+        return true;
+    }
+    /*
+     * onOptionsItemSelected(MenuItem item)
+     * #onOptionsItemSelected(MenuItem item)
+     * @return int
+       */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.offline) {
+            Intent intent=new Intent();
+//            intent.putExtra("x", e.geoPt.longitude);
+//            intent.putExtra("y", e.geoPt.latitude);
+            intent.setClass(this, OfflineDemo.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
     public void InitListener()
     {
