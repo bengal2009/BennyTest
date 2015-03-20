@@ -54,11 +54,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="FindLoca"
         android:id="@+id/BUT1"
         android:onClick="TEST"
-        android:layout_alignTop="@+id/button1"
-        android:layout_toStartOf="@+id/button1"
-        android:layout_marginEnd="55dp" />
+       />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude"
+        android:id="@+id/BUT2"
+        android:onClick="GerLookup"
+
+        android:layout_marginLeft="100dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repos"
+        android:id="@+id/BUT3"
+        android:onClick="Repos"
+
+        android:layout_marginLeft="300dp" />
 
 </RelativeLayout>

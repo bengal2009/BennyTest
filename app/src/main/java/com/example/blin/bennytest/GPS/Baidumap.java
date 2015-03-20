@@ -1,6 +1,7 @@
 package com.example.blin.bennytest.GPS;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +13,6 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.VersionInfo;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -29,16 +29,19 @@ import com.baidu.mapapi.search.geocode.GeoCodeOption;
 import com.baidu.mapapi.search.geocode.GeoCodeResult;
 import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.example.blin.bennytest.R;
-
+//http://blog.csdn.net/android_ls/article/details/8583656
 public class Baidumap extends Activity implements
         OnGetGeoCoderResultListener {
     String TAG = "LocationDemo";
+    private static final String LTAG = Baidumap.class.getSimpleName();
     // 定位相?
     LocationClient mLocClient;
     public MyLocationListenner myListener = new MyLocationListenner();
     private LocationMode mCurrentMode;
+    private Context mcontext;
     BitmapDescriptor mCurrentMarker;
 
 
@@ -54,8 +57,39 @@ public class Baidumap extends Activity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baidumap);
-        requestLocButton = (Button) findViewById(R.id.button1);
+        mcontext=getApplicationContext();
+
         mCurrentMode = LocationMode.NORMAL;
+
+        InitListener();
+
+        // 地?初始化
+        mMapView = (MapView) findViewById(R.id.bmapView);
+
+        mBaiduMap = mMapView.getMap();
+        // ??定位??
+        mBaiduMap.setMyLocationEnabled(true);
+        // 定位初始化
+        mLocClient = new LocationClient(this);
+        mLocClient.registerLocationListener(myListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true);// 打?gps
+        option.setCoorType("bd09ll"); // ?置坐??型
+        option.setScanSpan(1000);
+        option.setProdName("Benny");
+        mLocClient.setLocOption(option);
+        mLocClient.start();
+        // 初始化搜索模?，注?事件?听
+        mSearch = GeoCoder.newInstance();
+        mSearch.setOnGetGeoCodeResultListener(this);
+//        SWitch MapMode
+//        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+//        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+//        mBaiduMap.setTrafficEnabled(((CheckBox) view).isChecked());
+    }
+    public void InitListener()
+    {
+        requestLocButton = (Button) findViewById(R.id.button1);
         requestLocButton.setText("普通");
         View.OnClickListener btnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
@@ -108,25 +142,6 @@ public class Baidumap extends Activity implements
             }
         };
         group.setOnCheckedChangeListener(radioButtonListener);
-
-        // 地?初始化
-        mMapView = (MapView) findViewById(R.id.bmapView);
-
-        mBaiduMap = mMapView.getMap();
-        // ??定位??
-        mBaiduMap.setMyLocationEnabled(true);
-        // 定位初始化
-        mLocClient = new LocationClient(this);
-        mLocClient.registerLocationListener(myListener);
-        LocationClientOption option = new LocationClientOption();
-        option.setOpenGps(true);// 打?gps
-        option.setCoorType("bd09ll"); // ?置坐??型
-        option.setScanSpan(1000);
-        mLocClient.setLocOption(option);
-        mLocClient.start();
-        // 初始化搜索模?，注?事件?听
-        mSearch = GeoCoder.newInstance();
-        mSearch.setOnGetGeoCodeResultListener(this);
     }
     public void TEST(View V)
     {
@@ -134,10 +149,25 @@ public class Baidumap extends Activity implements
         mSearch.geocode(new GeoCodeOption().city(
                 "上海").address(
                 "中山北路二段"));
-        Toast.makeText(getApplicationContext(), VersionInfo.getApiVersion(),
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), VersionInfo.getApiVersion(),
+//                Toast.LENGTH_SHORT).show();
     }
+    public void Repos(View V)
+    {
+        if (mLocClient != null && mLocClient.isStarted()){
+            mLocClient.requestLocation();
+            Log.i(TAG,"Request Location");
+        }
+    }
+    public void GerLookup(View V)
+    {
+        BDLocation location;
+        LatLng ptCenter = new LatLng(31.260164, 121.442622);
+        // 反Geo搜索
+        mSearch.reverseGeoCode(new ReverseGeoCodeOption()
+                .location(ptCenter));
 
+    }
     /**
      * 定位SDK?听函?
      */
