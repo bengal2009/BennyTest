@@ -215,8 +215,8 @@ public class Baidumap extends ActionBarActivity implements
                             // 此??置??者?取到的方向信息，???0-360
                     .direction(100).latitude(location.getLatitude())
                     .longitude(location.getLongitude()).build();
-          /*  Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
-            Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));*/
+         Log.i(TAG,"Latitude:"+Double.toString(location.getLatitude()));
+            Log.i(TAG,"Longitude:"+Double.toString(location.getLongitude()));
             CurPOI=new LatLng(location.getLatitude(),location.getLongitude()) ;
 
             mBaiduMap.setMyLocationData(locData);
