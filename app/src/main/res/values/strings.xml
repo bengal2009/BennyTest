@@ -29,5 +29,26 @@
     <string name="title_activity_notification_sample">NotificationSample</string>
     <string name="title_activity_baidumap">Baidumap</string>
     <string name="title_activity_baidu_loc">BaiduLoc</string>
-
+    <string name="hight_accuracy_desc">高精度定位模式下，?同?使用GPS、Wifi和基站定位，返回的是前件下精度最好的定位果</string>
+    <string name="saving_battery_desc">低功耗定位模式下，?使用网?定位即Wifi和基站定位，返回的是前件下精度最好的网定位?果</string>
+    <string name="device_sensor_desc">定位模式下，只使用的GPS行定位。模式下，由于GPS芯片?定需要，首次定位速度?需要一定的</string>
+    <string name="error_code_detail"> 61 ： GPS定位?果\n
+		62 ： ?描整合定位依据失?。此?定位?果?效。\n
+		63 ： 网?异常，?有成功向服?器?起?求。此?定位?果?效。\n
+		65 ： 定位?存的?果。\n
+		66 ： 离?定位?果。通?requestOfflineLocaiton?用???的返回?果\n
+		67 ： 离?定位失?。通?requestOfflineLocaiton?用???的返回?果\n
+		68 ： 网??接失??，查找本地离?定位???的返回?果\n
+		161： 表示网?定位?果\n
+		162~167： 服?端定位失?\n
+		502：key????\n
+		505：key不存在或者非法\n
+		601：key服?被??者自己禁用\n
+		602：key mcode不匹配\n
+		501～700：key??失?\n</string>
+    <string name="qa_callback">反方法</string>
+    <string name="qa_callback_mail">mapapi@baidu.com</string>
+    <string name="startlocation">定位</string>
+    <string name="stoplocation">停止定位</string>
+    <string name="error_code_desc">明</string>
 </resources>
