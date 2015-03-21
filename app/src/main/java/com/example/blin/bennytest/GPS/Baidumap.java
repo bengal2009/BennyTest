@@ -31,8 +31,8 @@ public class Baidumap extends Activity {
     public MyLocationListenner myListener = new MyLocationListenner();
     private LocationMode mCurrentMode;
     BitmapDescriptor mCurrentMarker;
-
-    MapView mMapView;
+    private MapView mMapView=null;
+//    MapView mMapView;
     BaiduMap mBaiduMap;
 
     // UI相?
@@ -51,7 +51,7 @@ public class Baidumap extends Activity {
             public void onClick(View v) {
                 switch (mCurrentMode) {
                     case NORMAL:
-                        requestLocButton.setText("跟?");
+                        requestLocButton.setText("跟");
                         mCurrentMode = LocationMode.FOLLOWING;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(
@@ -65,7 +65,7 @@ public class Baidumap extends Activity {
                                         mCurrentMode, true, mCurrentMarker));
                         break;
                     case FOLLOWING:
-                        requestLocButton.setText("??");
+                        requestLocButton.setText("111");
                         mCurrentMode = LocationMode.COMPASS;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(
