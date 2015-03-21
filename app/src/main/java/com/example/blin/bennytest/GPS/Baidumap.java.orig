@@ -46,10 +46,17 @@ public class Baidumap extends ActionBarActivity implements
     private LocationMode mCurrentMode;
     private Context mcontext;
     BitmapDescriptor mCurrentMarker;
+<<<<<<< HEAD
+    private MapView mMapView=null;
+//    MapView mMapView;
+    BaiduMap mBaiduMap;
+
+=======
 
     GeoCoder mSearch = null; // 搜索模?，也可去掉地?模??立使用
     BaiduMap mBaiduMap = null;
     MapView mMapView = null;
+>>>>>>> fc33883e3fe3383db54e96d8e20c692fa6abe30f
     // UI相?
     RadioGroup.OnCheckedChangeListener radioButtonListener;
     Button requestLocButton;
@@ -147,7 +154,7 @@ public class Baidumap extends ActionBarActivity implements
             public void onClick(View v) {
                 switch (mCurrentMode) {
                     case NORMAL:
-                        requestLocButton.setText("跟?");
+                        requestLocButton.setText("跟");
                         mCurrentMode = LocationMode.FOLLOWING;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(
@@ -161,7 +168,7 @@ public class Baidumap extends ActionBarActivity implements
                                         mCurrentMode, true, mCurrentMarker));
                         break;
                     case FOLLOWING:
-                        requestLocButton.setText("??");
+                        requestLocButton.setText("111");
                         mCurrentMode = LocationMode.COMPASS;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(

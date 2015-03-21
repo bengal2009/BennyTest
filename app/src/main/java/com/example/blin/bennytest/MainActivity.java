@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
-Context mcontext;
+    Context mcontext;
     GestureDetector gestureDetector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ Context mcontext;
 
             Log.i("MainActivity","SP Read!"+"Name"+SP.getString("Name",""));
         }
-     //Gesture Test
+        //Gesture Test
         InitGesture();
     }
     @Override
@@ -98,7 +98,7 @@ Context mcontext;
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                    float velocityY) {
                 if(velocityX>0){
-                   // viewFlipper.showNext();
+                    // viewFlipper.showNext();
                     Toast.makeText(getApplicationContext(), "Right",
                             Toast.LENGTH_SHORT).show();
                 }else {
@@ -116,23 +116,23 @@ Context mcontext;
             }
         });
     }
-public  void InitAnim(TextView A2)
-{
-    Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-    A2.startAnimation(animation2);
-}
+    public  void InitAnim(TextView A2)
+    {
+        Animation animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+        A2.startAnimation(animation2);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-//Test Fragment
+    //Test Fragment
     public void TestClick(View v)
     {
         Intent intent1 = new Intent(getApplicationContext(),  TestBlank.class);
 //        intent.putExtra("bundle", "Second");
-      	startActivity(intent1);
+        startActivity(intent1);
 
 
         Toast.makeText(getApplicationContext(), "Test",
@@ -153,3 +153,4 @@ public  void InitAnim(TextView A2)
         return super.onOptionsItemSelected(item);
     }
 }
+
