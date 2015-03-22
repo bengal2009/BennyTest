@@ -68,6 +68,8 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
     protected void onStop() {
         // TODO Auto-generated method stub
         mLocationClient.stop();
+        mLocationClient=null;
+        mMyLocationListener=null;
         super.onStop();
     }
 
@@ -127,6 +129,7 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
             mSearch.reverseGeoCode(new ReverseGeoCodeOption()
                     .location( CurPOI));
             LocationResult.setText(sb.toString());
+            mLocationClient.stop();
 //            Log.i("BaiduLocationApiDem", sb.toString());
         }
 
@@ -165,7 +168,7 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
                     .show();
             return;
         }
-        LocationResult.append(result.getAddress());
+        LocationResult.append("\n"+result.getAddress());
 //        Toast.makeText(this, result.getAddress(),
 //                Toast.LENGTH_LONG).show();
 
