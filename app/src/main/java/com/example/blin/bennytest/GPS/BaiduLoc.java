@@ -31,7 +31,7 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
     private RadioGroup selectMode,selectCoordinates;
     private EditText frequence;
     private LocationClientOption.LocationMode tempMode = LocationClientOption.LocationMode.Hight_Accuracy;
-    private String tempcoor="gcj02";
+    private String tempcoor="bd09ll";
     private CheckBox checkGeoLocation;
     private LatLng CurPOI;
     public LocationClient mLocationClient;
@@ -62,7 +62,6 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
         mLocationClient.setLocOption(option);
         mLocationClient.start();
         mLocationClient.registerLocationListener(mMyLocationListener);
-
         mSearch.setOnGetGeoCodeResultListener(this);
     }
     @Override
@@ -130,7 +129,7 @@ public class BaiduLoc extends ActionBarActivity implements OnGetGeoCoderResultLi
             mSearch.reverseGeoCode(new ReverseGeoCodeOption()
                     .location( CurPOI));
             LocationResult.setText(sb.toString());
-//            mLocationClient.stop();
+            mLocationClient.stop();
 //            Log.i("BaiduLocationApiDem", sb.toString());
         }
 
