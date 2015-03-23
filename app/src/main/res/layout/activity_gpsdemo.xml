@@ -4,13 +4,32 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.blin.bennytest.GPS.GPSDEMO">
+    tools:context="com.example.blin.bennytest.GPS.GPSDEMO"
+    >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView3" />
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/ANDID"
+            android:layout_gravity="right" />
+
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GPS"
@@ -19,5 +38,94 @@
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="73dp" />
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true" >
+    </ImageSwitcher>
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#99000000"
+        android:padding="10dp" />
+    <TextSwitcher
+        android:id="@+id/textSwitcher2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#99000000"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSwitch"
+        android:text="Next Image >>"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/textView3" />
+
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSwitch2"
+        android:text="Switch2"
+        android:id="@+id/button4"
+        android:layout_alignTop="@+id/imageSwitcher"
+        android:layout_alignParentRight="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="NoClick"
+            android:text="Notification"
+            android:id="@+id/NotClick"
+            android:layout_alignTop="@+id/imageSwitcher"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffeb2e38"
+            android:minWidth="200sp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="SDCLICK"
+            android:text="SHUTDOWN"
+            android:id="@+id/button5"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SetAlarm"
+            android:id="@+id/button7"
+            android:onClick="AlarmSet"
+            android:layout_above="@+id/footerView"
+            android:layout_centerHorizontal="true"
+             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SetAlarmSchedule"
+            android:id="@+id/button8"
+            android:onClick="AlarmSet1"
+            android:layout_above="@+id/footerView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="69dp" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/footerView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/footer" />
+
+
+
 
 </RelativeLayout>

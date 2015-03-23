@@ -1,26 +1,205 @@
 package com.example.blin.bennytest.GPS;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextSwitcher;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher.ViewFactory;
 
 import com.example.blin.benlib.BenGps;
+import com.example.blin.benlib.BenUtil;
+import com.example.blin.bennytest.PlayReceiver;
 import com.example.blin.bennytest.R;
+
+import java.util.Calendar;
 
 public class GPSDEMO extends ActionBarActivity {
     String TAG = "GPSDEMO";
+    private static final String[] TEXTS = { "Image #1", "Image #2", "Image #3" };
+    private int mPosition = 0;
+    private TextSwitcher mTextSwitcher;
+    private TextSwitcher mTextSwitcher2;
+    BenUtil A1=new BenUtil();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gpsdemo);
+        if (Build.VERSION.SDK_INT < 16) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+
+        TextView t2=(TextView) findViewById(R.id.textView3);
+        t2.setText("System ID:"+A1.SystetemID(this));
+        mTextSwitcher = (TextSwitcher) findViewById(R.id.textSwitcher);
+        mTextSwitcher2 = (TextSwitcher) findViewById(R.id.textSwitcher2);
+        A1.BenAnimateText(this,mTextSwitcher2);
+        mTextSwitcher.setFactory(new ViewFactory() {
+            @Override
+            public View makeView() {
+                TextView textView = new TextView(getApplication());
+                textView.setGravity(Gravity.CENTER);
+                return textView;
+            }
+        });
+
+        mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
+        mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
+        ResolutionInfo();
 
     }
+    public void ResolutionInfo()
+    {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay()
+                .getMetrics(metrics);
+        int width = metrics.widthPixels;
+        int height = metrics.heightPixels;
+        int DPI = metrics.densityDpi;
+//        Log.i(TAG,"width:"+Integer.toString(width)+",Height:"+Integer.toString(height)+",DPI:"+Integer.toString(DPI));
 
-    public void GpsTest(View v)
+    }
+    public void AlarmSet(View view) {
+        Calendar cal = Calendar.getInstance();
+        // 設定於 3 分鐘後執行
+        cal.add(Calendar.SECOND, 7);
+
+        Intent intent = new Intent(this, PlayReceiver.class);
+        intent.putExtra("msg", "play_hskay");
+
+        PendingIntent pi = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pi);
+        Toast.makeText(getApplicationContext(), "Alarm set Complete! ",
+                Toast.LENGTH_SHORT).show();
+
+    }
+    public void AlarmSet1(View view) {
+        // 向 Android 系統註冊 AlarmManager
+        for(int x=1;x<6;x++)
+        {
+            Calendar mCal = Calendar.getInstance();
+            // 自明天起, 連續 5 天的 14:00 執行
+            mCal.add(Calendar.DATE,  x);
+            mCal.set(Calendar.HOUR_OF_DAY, 14);
+            mCal.set(Calendar.MINUTE, 0);
+            mCal.set(Calendar.SECOND, 0);
+            Intent intentAlarm = new Intent(this, PlayReceiver.class);
+
+            // 以日期字串組出不同的 category
+            intentAlarm.addCategory("D"+String.valueOf(mCal.get(Calendar.YEAR))+String.valueOf((mCal.get(Calendar.MONTH)+1))+String.valueOf(mCal.get(Calendar.DATE)));
+
+            intentAlarm.putExtra("msg", "play_hskay");
+            PendingIntent pi = PendingIntent.getBroadcast(this, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            am.set(AlarmManager.RTC_WAKEUP, mCal.getTimeInMillis(), pi);
+        }
+
+        Toast.makeText(getApplicationContext(), "Alarm set Complete! ",
+                Toast.LENGTH_SHORT).show();
+
+    }
+    public void sendNotification(View view) {
+
+        // BEGIN_INCLUDE(build_action)
+        /** Create an intent that will be fired when the user clicks the notification.
+         * The intent needs to be packaged into a {@link android.app.PendingIntent} so that the
+         * notification service can fire it on our behalf.
+         */
+        Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://developer.android.com/reference/android/app/Notification.html"));
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        // END_INCLUDE(build_action)
+
+        // BEGIN_INCLUDE (build_notification)
+        /**
+         * Use NotificationCompat.Builder to set up our notification.
+         */
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+
+        /** Set the icon that will appear in the notification bar. This icon also appears
+         * in the lower right hand corner of the notification itself.
+         *
+         * Important note: although you can use any drawable as the small icon, Android
+         * design guidelines state that the icon should be simple and monochrome. Full-color
+         * bitmaps or busy images don't render well on smaller screens and can end up
+         * confusing the user.
+         */
+//        builder.setSmallIcon(R.drawable.ic_stat_notification);
+
+        // Set the intent that will fire when the user taps the notification.
+        builder.setContentIntent(pendingIntent);
+
+        // Set the notification to auto-cancel. This means that the notification will disappear
+        // after the user taps it, rather than remaining until it's explicitly dismissed.
+        builder.setAutoCancel(true);
+
+        /**
+         *Build the notification's appearance.
+         * Set the large icon, which appears on the left of the notification. In this
+         * sample we'll set the large icon to be the same as our app icon. The app icon is a
+         * reasonable default if you don't have anything more compelling to use as an icon.
+         */
+//        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+
+        /**
+         * Set the text of the notification. This sample sets the three most commononly used
+         * text areas:
+         * 1. The content title, which appears in large type at the top of the notification
+         * 2. The content text, which appears in smaller text below the title
+         * 3. The subtext, which appears under the text on newer devices. Devices running
+         *    versions of Android prior to 4.2 will ignore this field, so don't use it for
+         *    anything vital!
+         */
+        builder.setContentTitle("BasicNotifications Sample");
+        builder.setContentText("Time to learn about notifications!");
+        builder.setSubText("Tap to view documentation about notifications.");
+
+        // END_INCLUDE (build_notification)
+
+        // BEGIN_INCLUDE(send_notification)
+        /**
+         * Send the notification. This will immediately display the notification icon in the
+         * notification bar.
+         */
+        NotificationManager notificationManager = (NotificationManager) getSystemService(
+                NOTIFICATION_SERVICE);
+        notificationManager.notify(1, builder.build());
+        // END_INCLUDE(send_notification)
+    }
+    public void NoClick(View view) {
+        A1.AddNotification(this,"Benny","Test","11111\n22222",0);
+//        Log.i(TAG,"Click!" );
+    }
+    public void onSwitch(View view) {
+        mTextSwitcher.setText(TEXTS[mPosition]);
+        mPosition = (mPosition + 1) % TEXTS.length;
+    }
+    public void onSwitch2(View view) {
+        mTextSwitcher2.setText(TEXTS[mPosition]);
+        mPosition = (mPosition + 1) % TEXTS.length;
+    }
+    public void SDCLICK(View view){
+        this.finish();
+    }
+
+    public void TestGPS(View v)
     {
         String address = "";
         BenGps.GPSService mGPSService = new BenGps.GPSService(this);
@@ -41,7 +220,7 @@ public class GPSDEMO extends ActionBarActivity {
             Toast.makeText(this, "Latitude:" + latitude + " | Longitude: " + longitude, Toast.LENGTH_LONG).show();
 
             address = mGPSService.getLocationAddress();
-            Log.i(TAG,"Latitude: " + latitude + " \nLongitude: " + longitude);
+//            Log.i(TAG,"Latitude: " + latitude + " \nLongitude: " + longitude);
 //            tvLocation.setText("Latitude: " + latitude + " \nLongitude: " + longitude);
 //            tvAddress.setText("Address: " + address);
         }

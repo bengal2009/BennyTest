@@ -1,0 +1,18 @@
+SMS
+
+Column ID    -   Column Name
+
+0                      :      _id
+ 1                      :     thread_id
+ 2                      :     address
+ 3                      :     person
+ 4                      :     date
+ 5                      :     protocol
+ 6                      :     read
+ 7                      :    status
+ 8                      :    type
+ 9                      :    reply_path_present
+ 10                   :    subject
+ 11                   :    body
+ 12                   :    service_center
+ 13                   :    locked
